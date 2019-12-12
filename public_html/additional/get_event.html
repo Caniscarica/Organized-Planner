@@ -1,0 +1,74 @@
+<!-- Author: Kirsten Todd -->
+<html>
+    <head>
+        <title>
+            get_event.php
+        </title>
+
+        <!-- jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+	<!-- Datetimepicker -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js"></script>
+
+	<!-- Bootstrap library -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+	<!-- Style Sheets -->
+	<link rel="stylesheet" href="../css/geteventstyle.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </head>
+    <body>
+        <div class="topnav">
+            <a class="active" href="../calendar.html"><i class="fa fa-calendar" aria-hidden="true"></i></a>
+            <div class="topnav-right">
+                <a href="get_event.html"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></a>
+                <a href="../index.html"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+            </div>
+        </div>
+        <br>
+        <div class="container" id="eventForm">
+
+            <form action="insert_event.php" method="POST" autocomplete="off">
+
+                <b>Title:</b>
+                <input type="text" name="title" required>
+
+                <b>Start Date:</b>
+                <input type="text" name="sdate" id="sdate" required>
+
+                <b>End Date:</b>
+                <input type="text" name="edate" id="edate" readonly>
+
+                <b>Reminder:</b>
+                <input type="text" name="reminder" id="reminder" readonly>
+
+                <b>Notes:</b>
+                <input type="text" name="notes">
+
+                <b>Location:</b>
+                <input type="text" name="location">
+		
+		<!-- Date pickers -->
+	        <script>
+
+		    $("#sdate").datetimepicker({
+		    });
+
+                    $("#edate").datetimepicker({
+		    });
+
+                    $("#reminder").datetimepicker({
+		    });
+
+		</script>
+
+                <input type="submit" value="submit" id="submit" name="submit">
+
+            </form>
+        </div>
+    </body>
+</html>

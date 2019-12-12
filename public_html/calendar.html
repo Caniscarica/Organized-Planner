@@ -1,0 +1,163 @@
+<!-- Author: Kirsten -->
+<html>
+    <head>
+	<title>
+	    Calendar
+	</title>
+
+	<!-- Style Sheets -->
+        <link rel="stylesheet" href="css/theme3.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+            body {
+                margin: 0;
+		font-family: Calibri, sans-serif;
+    		font-family: 'Roboto Condensed', sans-serif;
+		font-size: 24px;
+		font-weight: 700;
+            }
+
+            .topnav {
+  		width: 100%;
+  		overflow: hidden;
+  		background-color: #c266ff;
+  		border-style: solid;
+  		border-color:  #c266ff;
+	    }
+
+	    .topnav a {
+ 		float: left;
+  		color: white;
+ 	 	text-align: center;
+  		padding: 14px 16px;
+  		transition: all 0.3s ease;
+  		font-size: 36px;
+	    }
+	
+	    .topnav a:hover {
+  		background-color: #f5e6ff;
+  		color: c266ff;
+	    }
+
+	    .topnav-right {
+  		float: right;
+	    }
+	</style>
+        
+	<!-- Calender Maker -->
+	<script type="text/javascript" src="js/caleandar.js"></script>
+
+    </head>
+    <body>
+        
+        <!-- Tool Bar -->        
+	<div class="topnav">
+	    <a class="active" href="additional/DayView.php"><i class="fa fa-calendar" aria-hidden="true"></i></a>
+	    <div class="topnav-right">
+		<a href="additional/get_event.html"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></a>
+                <a href="index.html"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+	    </div>
+	</div>
+
+	<br>
+
+	<!-- Calendar -->
+	<div class="container">
+            <div class="container" id="caleandar">
+
+            </div>
+        </div>
+
+	<!-- Creating an object -->
+        <script type="text/javascript">
+
+            var fetcher = new XMLHttpRequest();
+            fetcher.onload = function () 
+            {
+		var options = {};
+                var events = [];
+		var temp = {};
+		var element = document.getElementById('caleandar');
+
+		var obj = JSON.parse(this.responseText);
+
+		for ( var key in obj )
+		{
+		    // StartDate 	
+		    var startDate = obj[key].StartDate.split("-");
+		    var startYear = parseInt( startDate[0], 10 );
+		    var startMonth = ( parseInt( startDate[1], 10 ) - 1 );
+
+		    var startDateTime = startDate[2].split(" ");
+		    var startDay = parseInt( startDateTime[0], 10 );
+
+		    temp.Date = new Date( startYear, startMonth, startDay );
+		    
+		    if ( obj[key].Notes != null && obj[key].Place != null)
+		    {
+		        temp.Title = "Start : (" + obj[key].Title + ") Notes : (" + obj[key].Notes + ") Location : (" + obj[key].Place + ")";
+		    }
+		    else if ( obj[key].Notes == null && obj[key].Place != null ) 
+		    {
+			temp.Title = "Start : (" + obj[key].Title + ") Location : (" + obj[key].Place + ")";
+		    }
+		    else if ( obj[key].Notes != null && obj[key].Place == null ) 
+		    {
+			temp.Title = "Start : (" + obj[key].Title + ") Notes : (" + obj[key].Notes + ")";
+		    }
+		    else
+		    {
+			temp.Title = "Start : (" + obj[key].Title + ")";
+		    }
+		    
+		    temp.Link = "http://ugdev.cs.smu.ca/~group3/additional/delete_event_form.php"
+
+		    events.push(temp);
+		    
+		    temp = {};
+		    
+		    // EndDate
+		    var endDate = obj[key].EndDate.split("-");
+		    var endYear = parseInt( endDate[0], 10 );
+		    var endMonth = ( parseInt( endDate[1], 10 ) - 1 );
+
+		    var endDateTime = endDate[2].split(" ");
+		    var endDay = parseInt( endDateTime[0], 10 );
+
+		    temp.Date = new Date( endYear, endMonth, endDay );
+		    temp.Title = "End : (" + obj[key].Title + ")";
+	  	    temp.Link = "http://ugdev.cs.smu.ca/~group3/additional/delete_event_form.php"
+
+		    events.push(temp);		    
+		    temp = {};
+
+		    // Reminder
+		    if ( obj[key].Reminder != null )
+		    {
+		        var reminder = obj[key].Reminder.split("-");
+		        var reminderYear = parseInt( reminder[0], 10 );
+		        var reminderMonth = (parseInt( reminder[1], 10 ) - 1 );
+
+		        var reminderDateTime = reminder[2].split(" ");
+		        var reminderDay = parseInt( reminderDateTime[0], 10 );
+
+		        temp.Date = new Date( reminderYear, reminderMonth, reminderDay );
+		        temp.Title = "Reminder : (" + obj[key].Title + ")";
+		        temp.Link = "http://ugdev.cs.smu.ca/~group3/additional/delete_event_form.php"
+
+		        events.push(temp);
+
+		        temp = {};
+		    }
+
+		}
+		caleandar(element, events, options);
+	    };
+
+            fetcher.open ("get", "additional/get_data.php");
+            fetcher.send();
+            
+	</script>
+    </body>
+</html>

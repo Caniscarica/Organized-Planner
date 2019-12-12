@@ -1,0 +1,73 @@
+/* Kirsten Todd */
+/* James Moase - container */
+
+body {
+  background: #f5e6ff;
+  margin: 0;
+}
+.container {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 10px;
+  border-radius: 25px;
+  font-family: Calibri, sans-serif;
+  font-size: 24px;
+  letter-spacing: -0.4px;
+  word-spacing: 0px;
+  color: #000000;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+}
+
+input[type=text], select {
+  width: 100%;
+  height: 1%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+.topnav {
+  width: 100%;
+  overflow: hidden;
+  background-color: #c266ff;
+  border-style: solid;
+  border-color:  #c266ff;
+}
+
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  transition: all 0.3s ease;
+  font-size: 36px;
+}
+
+.topnav a:hover {
+  background-color: #f5e6ff;
+  color: c266ff;
+}
+
+.topnav-right {
+  float: right;
+}
+
+input[type=submit] {
+  background-color: #c266ff;
+  border: none;
+  color: white;
+  padding: 10px 200px;
+  text-decoration: none;
+  margin: 4px 1px;
+  cursor: pointer;
+}
+

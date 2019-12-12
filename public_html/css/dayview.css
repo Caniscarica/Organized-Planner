@@ -1,0 +1,68 @@
+/* Author: Kirsten Todd */
+body {
+    margin: 0;
+}
+
+.topnav {
+  width: 100%;
+  overflow: hidden;
+  background-color: #c266ff;
+  border-style: solid;
+  border-color:  #c266ff;
+}
+
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  transition: all 0.3s ease;
+  font-size: 36px;
+}
+
+.topnav a:hover {
+  background-color: #f5e6ff;
+  color: c266ff;
+}
+
+.topnav-right {
+  float: right;
+}
+
+
+
+/* Author: Mohan */
+
+.container {
+    height:720px;
+    width: 900px;
+    display: inline-flex;
+}
+
+.timings {
+    text-align: right;
+    padding-right: 10px;
+    width: 100px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: c266ff;
+    font-size: 0.5em;
+    box-sizing: border-box
+}
+
+.timings span {
+    font-size: 200%;
+    color: #000000;
+}
+.days {
+    height: 720px;
+    width: 620px;
+    padding: 0px 10px;
+    background-color: #f5e6ff;
+    border-color: #c266ff;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+}
